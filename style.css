@@ -59,6 +59,7 @@ form button {
     color: #fff;
     border: none;
     cursor: pointer;
+    margin-bottom: 1cm;
 }
 
 form button:hover {
