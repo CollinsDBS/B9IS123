@@ -48,7 +48,7 @@ def get_appointments():
     return jsonify([appointment.to_dict() for appointment in appointments]), 200
 
 @appointment_bp.route('/appointments/<int:id>', methods=['GET'])
-@cross_origin(supports_credentials==True)
+@cross_origin(supports_credentials=True)
 @jwt_required()
 def get_appointment(id):
     appointment = Appointment.query.get_or_404(id)
