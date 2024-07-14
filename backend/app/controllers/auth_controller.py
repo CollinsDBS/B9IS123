@@ -1,6 +1,7 @@
 import logging
 import traceback
 from flask import Blueprint, request, jsonify
+from flask_cors import cross_origin
 from app.models import User
 from app import db
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -13,6 +14,7 @@ logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 @auth_bp.route('/register', methods=['POST'])
+@cross_origin(supports_credentials=True)
 def register():
     try:
         data = request.get_json()
@@ -42,6 +44,7 @@ def register():
         return jsonify({'message': 'Internal Server Error'}), 500
 
 @auth_bp.route('/login', methods=['POST'])
+@cross_origin(supports_credentials=True)
 def login():
     try:
         data = request.get_json()
