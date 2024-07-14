@@ -1,4 +1,5 @@
 from flask import Blueprint, request, jsonify
+from flask_cors import cross_origin
 from app.models import User, Product, Appointment, Order
 from app import db
 from flask_jwt_extended import jwt_required
@@ -13,6 +14,7 @@ def get_users():
     return jsonify([user.to_dict() for user in users])
 
 @admin_bp.route('/users/<int:user_id>', methods=['DELETE'])
+@cross_origin(supports_credentials=True)
 @jwt_required()
 def delete_user(user_id):
     user = User.query.get(user_id)
