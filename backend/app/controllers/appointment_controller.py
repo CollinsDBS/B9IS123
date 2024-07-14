@@ -41,7 +41,7 @@ def create_appointment():
         return jsonify({'message': 'Internal Server Error'}), 500
 
 @appointment_bp.route('/appointments', methods=['GET'])
-@cross_origin(supports_credentials==True)
+@cross_origin(supports_credentials=True)
 @jwt_required()
 def get_appointments():
     appointments = Appointment.query.all()
@@ -56,7 +56,7 @@ def get_appointment(id):
 
 @appointment_bp.route('/appointments', methods=['POST'])
 @jwt_required()
-@cross_origin(supports_credentials==True)
+@cross_origin(supports_credentials=True)
 def book_appointment():
     current_user = get_jwt_identity()
     data = request.get_json()
@@ -72,7 +72,7 @@ def book_appointment():
 
 @appointment_bp.route('/appointments/<int:id>', methods=['PUT'])
 @jwt_required()
-@cross_origin(supports_credentials==True)
+@cross_origin(supports_credentials=True)
 def update_appointment(id):
     appointment = Appointment.query.get_or_404(id)
     data = request.get_json()
@@ -86,7 +86,7 @@ def update_appointment(id):
 
 @appointment_bp.route('/appointments/<int:id>', methods=['DELETE'])
 @jwt_required()
-@cross_origin(supports_credentials==True)
+@cross_origin(supports_credentials=True)
 def delete_appointment(id):
     appointment = Appointment.query.get_or_404(id)
     db.session.delete(appointment)
