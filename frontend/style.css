@@ -6,13 +6,19 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    flex: 1;
 }
 
 header {
-    background-color: #64a93e;
-    color: #fff;
-    padding: 1em;
+    background-color: rgb(2, 2, 24);
+    color: white;
+    padding: 20px 0;
     text-align: center;
 }
 
@@ -65,13 +71,15 @@ form button {
 form button:hover {
     background-color: #555;
 }
-/* Footer */
 
+/* Footer */
 footer {
-    background-color: #64a93e;
+    background-color: #111;
     color: white;
-    padding: 0.1em;
     text-align: center;
+    padding: 20px;
+    position: relative; /*footer*/
+    width: 100%;
 }
 
 .contact-details {
@@ -87,6 +95,3 @@ footer {
 .contact-details p {
     margin: 0.5em 0;
 }
-
-
- 
